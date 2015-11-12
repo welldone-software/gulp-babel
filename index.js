@@ -30,7 +30,9 @@ module.exports = function (opts) {
 			var res = babel.transform(file.contents.toString(), fileOpts);
 
 			if (file.sourceMap && res.map) {
-				res.map.file = replaceExt(res.map.file, '.js');
+				//res.map.file = replaceExt(res.map.file, '.js');
+				res.map.file = file.sourceMap.file;
+        			res.map.sources = file.sourceMap.sources;
 				applySourceMap(file, res.map);
 			}
 
